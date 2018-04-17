@@ -15,7 +15,7 @@ open class XMLModelizerModel: NSObject {
     var _guid: [String]!
     var _description: [String]!
     
-    open class func xmlModelizerXpathKeyMap() -> [String:String] {
+    @objc open class func xmlModelizerXpathKeyMap() -> [String:String] {
         return [
             "_title":"//item/title",
             "_link":"//item/link",
@@ -31,7 +31,7 @@ open class XMLModelizerModel: NSObject {
         let properties = class_copyPropertyList(self, &count)
         
         for i in 0..<Int(count) {
-            let propName = String(utf8String: property_getName(properties?[i]))
+            let propName = String(utf8String: property_getName((properties?[i])!))
             resultSet.append(propName!)
         }
         return resultSet
